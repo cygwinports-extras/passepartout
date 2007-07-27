@@ -1,0 +1,6 @@
+inherit gnome2
+
+DESCRIPTION="GNOME desktop publishing application"
+HOMEPAGE="http://www.stacken.kth.se/project/pptout/"
+
+CYGCONF_ARGS="--with-gnome"

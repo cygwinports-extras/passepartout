@@ -11,15 +11,17 @@ Runtime requirements:
   cygwin-1.5.24-2
   gamin-0.1.7-1
   ghostscript-x11
-  glib2-2.12.12-1
-  glibmm24-2.12.9-1
-  gtk2-x11-2.10.12-1
-  gtkmm24-2.10.9-1
+  glib2-2.12.13-1
+  glibmm24-2.12.10-1
+  gnome-vfs2-2.18.1-1
+  gtk2-x11-2.10.14-1
+  gtkmm24-2.10.10-1
   libfontconfig1-2.3.2-2
-  libfreetype26-2.3.4-2
+  libfreetype26-2.3.5-1
+  libgnome2-2.18.0-1
   libgnomecanvasmm26-2.16.0-1
   libsigc++20-2.0.17-1
-  libxml++26-2.14.0-1
+  libxml++26-2.18.1-1
 
 Build requirements:
 (besides corresponding -devel packages)
@@ -27,7 +29,7 @@ Build requirements:
   autoconf2.5-2.61-1
   automake1.9-1.9.6-2
   binutils-20060817-1
-  cygport-0.3.1-1
+  cygport-0.3.5-1
   gawk-3.1.5-4
   gcc-core-3.4.4-3
   gcc-g++-3.4.4-3
@@ -44,15 +46,15 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack passepartout-0.6.90-X-src.tar.bz2
+  unpack passepartout-0.7.0-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./passepartout-0.6.90-X.cygport all
+  cygport ./passepartout-0.7.0-X.cygport all
 
 This will create:
-  /usr/src/passepartout-0.6.90-X-src.tar.bz2
-  /usr/src/passepartout-0.6.90-X.tar.bz2
+  /usr/src/passepartout-0.7.0-X-src.tar.bz2
+  /usr/src/passepartout-0.7.0-X.tar.bz2
 
 -------------------------------------------
 
@@ -61,13 +63,13 @@ Files included in the binary package:
   /usr/bin/examinepdf.exe
   /usr/bin/passepartout.exe
   /usr/bin/xml2ps.exe
-  /usr/share/doc/Cygwin/passepartout-0.6.90.README
-  /usr/share/doc/passepartout-0.6.90/AUTHORS
-  /usr/share/doc/passepartout-0.6.90/BUGS
-  /usr/share/doc/passepartout-0.6.90/COPYING
-  /usr/share/doc/passepartout-0.6.90/INSTALL
-  /usr/share/doc/passepartout-0.6.90/NEWS
-  /usr/share/doc/passepartout-0.6.90/README
+  /usr/share/doc/Cygwin/passepartout-0.7.0.README
+  /usr/share/doc/passepartout-0.7.0/AUTHORS
+  /usr/share/doc/passepartout-0.7.0/BUGS
+  /usr/share/doc/passepartout-0.7.0/COPYING
+  /usr/share/doc/passepartout-0.7.0/INSTALL
+  /usr/share/doc/passepartout-0.7.0/NEWS
+  /usr/share/doc/passepartout-0.7.0/README
   /usr/share/doc/passepartout/README
   /usr/share/doc/passepartout/docbook.xslt
   /usr/share/doc/passepartout/examples/docbook.xslt
@@ -105,6 +107,9 @@ Files included in the binary package:
 ------------------
 
 Port Notes:
+
+----- version 0.7.0-1 -----
+Version bump; enabled GNOME support.
 
 ----- version 0.6.90-1 -----
 Updated for gtkmm-2.4 APIs.

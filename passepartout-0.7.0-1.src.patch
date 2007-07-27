@@ -1,0 +1,78 @@
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in origsrc/passepartout-0.7.0/configure.ac src/passepartout-0.7.0/configure.ac
+--- origsrc/passepartout-0.7.0/configure.ac	2007-07-26 06:31:26.000000000 -0500
++++ src/passepartout-0.7.0/configure.ac	2007-07-27 01:35:00.218750000 -0500
+@@ -30,7 +30,7 @@
+ # check for libxml++ 
+ AC_SUBST([XMLPP_LIBS])
+ AC_SUBST([XMLPP_CFLAGS])
+-PKG_CHECK_MODULES([XMLPP], libxml++-1.0 >= 1.0)
++PKG_CHECK_MODULES([XMLPP], libxml++-2.6)
+ AC_APPLY_RPATH([XMLPP_LIBS])
+ 
+ AC_SUBST([GTKMM_LIBS])
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in origsrc/passepartout-0.7.0/src/pptout/Makefile.am src/passepartout-0.7.0/src/pptout/Makefile.am
+--- origsrc/passepartout-0.7.0/src/pptout/Makefile.am	2007-07-26 06:31:05.000000000 -0500
++++ src/passepartout-0.7.0/src/pptout/Makefile.am	2007-07-27 01:35:00.234375000 -0500
+@@ -37,14 +37,13 @@
+ 
+ passepartout_CXXFLAGS += -I$(top_srcdir)/src -D'XMLPATH=$(xmldir)'
+ 
+-passepartout_LDADD = $(XMLPP_LIBS) $(GTKMM_LIBS) $(GNOMECANVAS_LIBS) \
+-		$(GTHREAD_LIBS) $(GNOME_LIBS) $(GNOMEVFS_LIBS)
+-
+ pptpartlibs= document/libdocument.a ../xml2ps/libxml2ps.a	\
+ 	../fonts/libfonts.a ../ps/libps.a			\
+ 	../util/libpptutil.a widget/libwidget.a
+ 
+-passepartout_LDADD += $(pptpartlibs)
++passepartout_LDADD = $(pptpartlibs) $(XMLPP_LIBS) $(GTKMM_LIBS) \
++		$(GNOMECANVAS_LIBS) $(GTHREAD_LIBS) $(GNOME_LIBS) $(GNOMEVFS_LIBS)
++
+ 
+ # Extra dependencies for builddate, so it is rebuilt every time anything else
+ # is rebuilt
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in origsrc/passepartout-0.7.0/src/ps/Makefile.am src/passepartout-0.7.0/src/ps/Makefile.am
+--- origsrc/passepartout-0.7.0/src/ps/Makefile.am	2007-06-13 06:48:09.000000000 -0500
++++ src/passepartout-0.7.0/src/ps/Makefile.am	2007-07-27 01:35:00.234375000 -0500
+@@ -15,8 +15,8 @@
+ libps_a_CXXFLAGS += -I$(top_srcdir)/src
+ 
+ examinepdf_CXXFLAGS = $(libps_a_CXXFLAGS)
+-examinepdf_LDADD = $(GTKMM_LIBS) \
+-	-L. -lps -L../fonts -lfonts -lps -L../util -lpptutil
++examinepdf_LDADD = libps.a ../fonts/libfonts.a libps.a ../util/libpptutil.a \
++		$(GTKMM_LIBS)
+ examinepdf_DEPENDENCIES = libps.a
+ 
+ #libps_a_LIBADD = $(GTKMM_LIBS)
+@@ -27,5 +27,5 @@
+ runtest_CXXFLAGS = -I$(top_srcdir)/src
+ runtest_CXXFLAGS += $(GTKMM_CFLAGS)
+ runtest_DEPENDENCIES = ../util/libpptutil.a $(noinst_LIBRARIES)
+-runtest_LDADD = -L../testbed -lppttest -L. -lps -L../util -lpptutil \
++runtest_LDADD = ../testbed/libppttest.a libps.a ../util/libpptutil.a \
+ 		$(GTKMM_LIBS)
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in origsrc/passepartout-0.7.0/src/util/Makefile.am src/passepartout-0.7.0/src/util/Makefile.am
+--- origsrc/passepartout-0.7.0/src/util/Makefile.am	2007-06-14 05:12:42.000000000 -0500
++++ src/passepartout-0.7.0/src/util/Makefile.am	2007-07-27 01:35:00.250000000 -0500
+@@ -20,4 +20,4 @@
+ 	test_boundary.cc test_procio.cc test_cmdline.cc
+ runtest_CXXFLAGS = -I$(top_srcdir)/src
+ runtest_DEPENDENCIES = $(noinst_LIBRARIES)
+-runtest_LDADD = -L../testbed -lppttest -L. -lpptutil $(GTKMM_LIBS) $(GNOMECANVAS_LIBS)
++runtest_LDADD = ../testbed/libppttest.a libpptutil.a $(GTKMM_LIBS) $(GNOMECANVAS_LIBS)
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x autom4te.cache -x config.cache -x config.log -x config.status -x config.h -x config.h.in -x ABOUT-NLS -x Makefile.in.in -x Makevars.template -x '*SlackBuild*' -x '*.egg-info' -x '*.class' -x '*.pyc' -x '*.mo' -x '*.gmo' -x '*.orig' -x '*.rej' -x '*.spec' -x '*.temp' -x '*~' -x '*.stackdump' -x COPYING -x INSTALL -x compile -x config-ml.in -x config.guess -x config.sub -x depcomp -x elisp-comp -x install-sh -x ltmain.sh -x mdate-sh -x missing -x mkinstalldirs -x py-compile -x symlink-tree -x texinfo.tex -x ylwrap -x Makefile.in -x makefile.in -x configure -x omf.make -x xmldocs.make -x gnome-doc-utils.make -x gnome-doc-utils.m4 -x intltool.m4 -x intltool-extract -x intltool-extract.in -x intltool-merge -x intltool-merge.in -x intltool-update -x intltool-update.in origsrc/passepartout-0.7.0/src/xml2ps/Makefile.am src/passepartout-0.7.0/src/xml2ps/Makefile.am
+--- origsrc/passepartout-0.7.0/src/xml2ps/Makefile.am	2007-06-22 11:07:26.000000000 -0500
++++ src/passepartout-0.7.0/src/xml2ps/Makefile.am	2007-07-27 01:35:00.265625000 -0500
+@@ -20,8 +20,9 @@
+ 
+ xml2ps_CXXFLAGS = $(libxml2ps_a_CXXFLAGS)
+ 
+-xml2ps_LDADD = $(XMLPP_LIBS) $(GTKMM_LIBS) $(GNOMECANVAS_LIBS)\
+-	libxml2ps.a ../fonts/libfonts.a ../ps/libps.a ../util/libpptutil.a 
++xml2ps_LDADD = \
++	libxml2ps.a ../fonts/libfonts.a ../ps/libps.a ../util/libpptutil.a \
++	$(XMLPP_LIBS) $(GTKMM_LIBS) $(GNOMECANVAS_LIBS)
+ 
+ #install DTDs and XSLTs in $(datadir)/xml/passepartout/ (xmldir is defined in configure.ac)
+ dist_xml_DATA = xml2ps.dtd xhtml.xslt docbook.xslt
