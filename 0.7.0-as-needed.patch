@@ -1,14 +1,3 @@
---- origsrc/passepartout-0.7.0/configure.ac	2007-07-26 06:31:26.000000000 -0500
-+++ src/passepartout-0.7.0/configure.ac	2007-07-27 01:35:00.218750000 -0500
-@@ -30,7 +30,7 @@
- # check for libxml++ 
- AC_SUBST([XMLPP_LIBS])
- AC_SUBST([XMLPP_CFLAGS])
--PKG_CHECK_MODULES([XMLPP], libxml++-1.0 >= 1.0)
-+PKG_CHECK_MODULES([XMLPP], libxml++-2.6)
- AC_APPLY_RPATH([XMLPP_LIBS])
- 
- AC_SUBST([GTKMM_LIBS])
 --- origsrc/passepartout-0.7.0/src/pptout/Makefile.am	2007-07-26 06:31:05.000000000 -0500
 +++ src/passepartout-0.7.0/src/pptout/Makefile.am	2007-07-27 01:35:00.234375000 -0500
 @@ -37,14 +37,13 @@

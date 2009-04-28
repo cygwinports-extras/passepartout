@@ -8,33 +8,38 @@ is on making it easy for the user to create publications with a flexible
 layout, typical examples being magazines, brochures and leaflets.
 
 Runtime requirements:
-  cygwin-1.5.24-2
-  gamin-0.1.7-1
-  ghostscript-x11
-  glib2-2.12.13-1
-  glibmm24-2.12.10-1
-  gnome-vfs2-2.18.1-1
-  gtk2-x11-2.10.14-1
-  gtkmm24-2.10.10-1
-  libfontconfig1-2.3.2-2
-  libfreetype26-2.3.5-1
-  libgnome2-2.18.0-1
-  libgnomecanvasmm26-2.16.0-1
-  libsigc++20-2.0.17-1
-  libxml++26-2.18.1-1
+  cygwin-1.7.0-45
+  coreutils
+  ghostscript
+  libatkmm1.6_1-2.16.0-1
+  libfam0-0.1.10-10
+  libfontconfig1-2.6.0-10
+  libfreetype6-2.3.9-1
+  libgcc1-4.3.2-2
+  libglib2.0_0-2.20.1-1
+  libglibmm2.4_1-2.20.0-1
+  libgnome2_0-2.26.0-1
+  libgnomecanvasmm2.6_1-2.26.0-1
+  libgnomevfs2_0-2.24.1-1
+  libgtk2.0_0-2.16.1-1
+  libgtkmm2.4_1-2.16.0-1
+  libpangomm1.4_1-2.24.0-1
+  libsigc2.0_0-2.2.3-10
+  libstdc++6-4.3.2-2
+  libxml++2.6_2-2.26.0-1
+  libxslt
 
 Build requirements:
 (besides corresponding -devel packages)
-  cygwin-1.5.24-2
-  autoconf2.5-2.61-1
-  automake1.9-1.9.6-2
-  binutils-20060817-1
-  cygport-0.3.5-1
-  gawk-3.1.5-4
-  gcc-core-3.4.4-3
-  gcc-g++-3.4.4-3
-  make-3.81-1
-  pkg-config-0.21-1
+  autoconf2.5-2.63-10
+  automake1.9-1.9.6-10
+  binutils-20080624-2
+  cygport-0.9.6-1
+  gawk-3.1.6-2
+  gcc4-core-4.3.2-2
+  gcc4-g++-4.3.2-2
+  make-3.81-2
+  pkg-config-0.23b-10
   sed-4.1.5-2
 
 Canonical website:
@@ -46,30 +51,29 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack passepartout-0.7.0-X-src.tar.bz2
+  unpack passepartout-0.7.1-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./passepartout-0.7.0-X.cygport all
+  cygport ./passepartout-0.7.1-X.cygport all
 
 This will create:
-  /usr/src/passepartout-0.7.0-X-src.tar.bz2
-  /usr/src/passepartout-0.7.0-X.tar.bz2
+  /usr/src/passepartout-0.7.1-X-src.tar.bz2
+  /usr/src/passepartout-0.7.1-X.tar.bz2
 
 -------------------------------------------
 
 Files included in the binary package:
 
+  /etc/postinstall/passepartout.sh
   /usr/bin/examinepdf.exe
   /usr/bin/passepartout.exe
   /usr/bin/xml2ps.exe
-  /usr/share/doc/Cygwin/passepartout-0.7.0.README
-  /usr/share/doc/passepartout-0.7.0/AUTHORS
-  /usr/share/doc/passepartout-0.7.0/BUGS
-  /usr/share/doc/passepartout-0.7.0/COPYING
-  /usr/share/doc/passepartout-0.7.0/INSTALL
-  /usr/share/doc/passepartout-0.7.0/NEWS
-  /usr/share/doc/passepartout-0.7.0/README
+  /usr/share/applications/passepartout.desktop
+  /usr/share/doc/passepartout/AUTHORS
+  /usr/share/doc/passepartout/BUGS
+  /usr/share/doc/passepartout/COPYING
+  /usr/share/doc/passepartout/NEWS
   /usr/share/doc/passepartout/README
   /usr/share/doc/passepartout/docbook.xslt
   /usr/share/doc/passepartout/examples/docbook.xslt
@@ -98,6 +102,9 @@ Files included in the binary package:
   /usr/share/doc/passepartout/users_guide.txt
   /usr/share/doc/passepartout/users_guide.xml
   /usr/share/doc/passepartout/xhtml.xslt
+  /usr/share/icons/hicolor/16x16/apps/passepartout.png
+  /usr/share/icons/hicolor/32x32/apps/passepartout.png
+  /usr/share/icons/hicolor/48x48/apps/passepartout.png
   /usr/share/man/man1/passepartout.1x.gz
   /usr/share/man/man1/xml2ps.1.gz
   /usr/share/xml/passepartout/docbook.xslt
@@ -108,14 +115,8 @@ Files included in the binary package:
 
 Port Notes:
 
------ version 0.7.0-1 -----
-Version bump; enabled GNOME support.
-
------ version 0.6.90-1 -----
-Updated for gtkmm-2.4 APIs.
-
------ version 0.6-1 -----
-Initial release for Cygwin.
+----- version 0.7.1-1 -----
+Initial release for Cygwin 1.7.
 
 
 Cygwin port maintained by:

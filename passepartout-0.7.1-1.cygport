@@ -1,0 +1,24 @@
+inherit gnome2
+
+DESCRIPTION="GNOME desktop publishing application"
+HOMEPAGE="http://www.stacken.kth.se/project/pptout/"
+SRC_URI+=" http://svn.mandriva.com/cgi-bin/viewvc.cgi/packages/cooker/${PN}/current/SOURCES/${PN}-16.png?revision=59439
+           http://svn.mandriva.com/cgi-bin/viewvc.cgi/packages/cooker/${PN}/current/SOURCES/${PN}-32.png?revision=59439
+           http://svn.mandriva.com/cgi-bin/viewvc.cgi/packages/cooker/${PN}/current/SOURCES/${PN}-48.png?revision=59439"
+
+PATCH_URI="0.7.0-as-needed.patch"
+
+CYGCONF_ARGS="--with-gnome"
+
+src_install() {
+	cd ${B}
+	cyginstall
+
+	for i in 16 32 48
+	do
+		insinto /usr/share/icons/hicolor/${i}x${i}/apps
+		newins ${S}/${PN}-${i}.png ${PN}.png
+	done
+
+	make_desktop_entry ${PN} Passepartout ${PN} "GNOME;Office;Publishing"
+}
